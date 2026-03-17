@@ -1,0 +1,4 @@
+whitelist-enabled: false
+not-whitelisted: "<red>You're not on the whitelist!</red>"
+nicknames:
+  - Nickname

@@ -1,0 +1,10 @@
+name: H3xWhitelist
+version: '1.0'
+main: me.h3xty.h3xWhitelist.H3xWhitelist
+api-version: '1.21'
+authors: [ H3xty ]
+description: Name based whitelist
+permissions:
+  h3xwhitelist:
+    description: Manage whitelist
+    default: op
