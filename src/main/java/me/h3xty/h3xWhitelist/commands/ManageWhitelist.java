@@ -57,6 +57,15 @@ public class ManageWhitelist implements BasicCommand {
                 removeNickname(commandSourceStack, args[1]);
                 break;
 
+            case "list":
+                List<String> whitelistedNicknames = plugin.getConfig().getStringList("nicknames");
+                if (!whitelistedNicknames.isEmpty()) {
+                    sendMessage(commandSourceStack, "<green>" + whitelistedNicknames + "</green>");
+                    return;
+                }
+                sendMessage(commandSourceStack, "<red>There are no whitelisted players!</red>");
+                break;
+
             case "reload":
                 plugin.reloadConfig();
                 sendMessage(commandSourceStack, "<green>Config reloaded!</green>");
@@ -100,6 +109,7 @@ public class ManageWhitelist implements BasicCommand {
             /h3xwhitelist off - Disable whitelist
             /h3xwhitelist add <nickname> - Add player to whitelist
             /h3xwhitelist remove <nickname> - Remove player from whitelist
+            /h3xwhitelist list - List of whitelisted players
             /h3xwhitelist reload - Reload config file</green>
             """;
         sendMessage(source, usage);
@@ -113,7 +123,7 @@ public class ManageWhitelist implements BasicCommand {
     @Override
     public @NonNull Collection<String> suggest(@NonNull CommandSourceStack commandSourceStack, String[] args) {
         if (args.length == 0 || args.length == 1) {
-            return List.of("on", "off", "add", "remove", "reload");
+            return List.of("on", "off", "add", "remove", "reload", "list");
         }
 
         if (args.length == 2) {
